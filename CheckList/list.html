@@ -1,0 +1,49 @@
+﻿<br />
+<form class="form-inline">
+    <div class="form-group">
+        <div class ="col-lg">
+            <select ng-model="systemQuery" ng-options="s.Label as s.Label for s in OfpSystems" class="form-control">
+                <option value="">  - System -  </option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class ="col-lg">
+            <input type="Search" ng-model="query" class="form-control search-query" placeholder="Description" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class ="col-lg">
+            <select ng-model="isImplementedQuery" class="form-control">
+                <option value="">- Implemented? -</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+    </div>
+    <button ng-click="reset()" type="submit" class="btn"><i class="icon-search"></i></button>
+    <button ng-click="query='';systemQuery='';isImplementedQuery=''; reset()" ng-disabled="!showResetButton()" type="submit" class="btn">Reset</button>
+</form>
+<br />
+<table class="table table-striped table-condensed table-hover">
+    <thead>
+        <th><a style="cursor:pointer" ng_click="sort_by='Id';asc = !asc" >id </a><span ng-show="do_show_arrow('Id',true)"><i class="icon-circle-arrow-down"></i></span><span ng-show="do_show_arrow('Id',false)"><i class="icon-circle-arrow-up"></i></span></th>
+        <th><a style="cursor:pointer" ng_click="sort_by='OfpSystem';asc = !asc" >System </a><span ng-show="do_show_arrow('OfpSystem',true)"><i class="icon-circle-arrow-down"></i></span><span ng-show="do_show_arrow('OfpSystem',false)"><i class="icon-circle-arrow-up"></i></span></th>
+        <th>Description</th>
+        <th>Implemented?</th>
+        <th><a href="#/new"><i class="icon-plus-sign icon-2x"></i></a></th>
+    </thead>
+    <tbody>
+        <tr ng-repeat="item in items | orderBy:sort_by:!asc" id="item_{{item.Id}}">
+            <td>{{item.Id}}</td>
+            <td>{{item.OfpSystem}}</td>
+            <td>{{item.Description}}</td>
+            <!--<td>{{item.IsImplemented}}</td>-->
+            <td><input type="checkbox" ng-checked={{item.IsImplemented}} disabled/></td>
+            <td><a href="#/edit/{{item.Id}}"><i class="icon-edit"></i></a> <a style="cursor:pointer" ng-click="askDelete()"><i class="icon-remove"></i></a></td>
+        </tr>
+    </tbody>
+</table>
+
+<a href="" ng-click = "getMore()" 
+    ng-show ="show_more()">Show more</a>
