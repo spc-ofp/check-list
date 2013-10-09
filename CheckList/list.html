@@ -34,7 +34,7 @@
         <th><a href="#/new"><i class="icon-plus-sign icon-2x"></i></a></th>
     </thead>
     <tbody>
-        <tr ng-repeat="item in items | orderBy:sort_by:!asc" id="item_{{item.Id}}">
+        <tr ng-repeat="item in items | orderBy:sort_by:!asc" id="item_{{item.Id}}" class="my-repeat-animation">
             <td>{{item.Id}}</td>
             <td>{{item.OfpSystem}}</td>
             <td>{{item.Description}}</td>
