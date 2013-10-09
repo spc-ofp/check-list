@@ -2,7 +2,7 @@
 
 controllers.controller("CreateCtrl", function ($scope, $location, DQCS) {
     $scope.OfpSystems = DQCS.queryOfpSystem();
-
+    $scope.IsImplementedList = [{ Id: 1, Label: "true" }, { Id: 0, Label: "false" }];
     $scope.save = function () {
         DQCS.save($scope.item, function () {
             $location.path('/');
