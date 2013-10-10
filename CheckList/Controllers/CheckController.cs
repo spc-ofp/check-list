@@ -24,7 +24,7 @@ namespace CheckList.Controllers
             _checkRepo = new CheckRepository(MvcApplication.UnitOfWork.Session);
         }
 
-        public IEnumerable<CheckModel> Get(string q = "", string systemQuery = "", string isImplementedQuery = "", bool desc = false,
+        public IEnumerable<CheckModel> Get(string q = "", string systemQuery = "", string isImplementedQuery = "", string typeQuery = "", bool desc = false,
                                                         int? limit = null, int offset = 0)
         {
             bool? isImplemented = null;
@@ -34,7 +34,7 @@ namespace CheckList.Controllers
                 if (isImplementedQuery != null && isImplementedQuery.ToUpper().Equals("0"))
                     isImplemented = false;
 
-            IEnumerable<Check> checks = _checkRepo.GetChecks(q, systemQuery, isImplemented, limit, offset);
+            IEnumerable<Check> checks = _checkRepo.GetChecks(q, systemQuery,typeQuery, isImplemented, limit, offset);
             List<CheckModel> result = new List<CheckModel>();
             foreach (Check check in checks)
             {
@@ -53,6 +53,11 @@ namespace CheckList.Controllers
         public IEnumerable<OfpSystem> GetSystems()
         {
             return _repository.GetAll<OfpSystem>();
+        }
+
+        public IEnumerable<CheckType> GetTypes()
+        {
+            return _repository.GetAll<CheckType>();
         }
 
         public HttpResponseMessage Post([FromBody]CheckModel model)
@@ -122,7 +127,9 @@ namespace CheckList.Controllers
             check.Description = model.Description;
             check.IsImplemented = (model.IsImplemented == 1) ? true : false;
             OfpSystem ofpSystem = _repository.Find<OfpSystem>(x => x.Label == model.OfpSystem).SingleOrDefault();
+            CheckType checkType = _repository.Find<CheckType>(x => x.Label == model.Type).SingleOrDefault();
             check.OfpSystem = ofpSystem;
+            check.Type = checkType;
             return check;
         }
     }

@@ -11,5 +11,6 @@ namespace CheckList.Domain
         public virtual OfpSystem OfpSystem { get; set; }
         public virtual String Description { get; set; }
         public virtual Boolean IsImplemented { get; set; }
+        public virtual CheckType Type { get; set; }
     }
 }

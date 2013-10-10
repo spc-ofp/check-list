@@ -17,6 +17,7 @@ namespace CheckList.DAL.Map
             References(x => x.OfpSystem, "ofp_system_id");
             Map(x => x.Description, "description");
             Map(x => x.IsImplemented, "is_implemented");
+            References(x => x.Type, "check_type_code");
         }
     }
 }

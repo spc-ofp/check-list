@@ -17,13 +17,15 @@ namespace CheckList.DAL.Repository
             _session = session;
         }
 
-        public List<Check> GetChecks(String description, String ofpSystem, bool? isImplemented, int? limit, int offset)
+        public List<Check> GetChecks(String description, String ofpSystem, String type,bool? isImplemented, int? limit, int offset)
         {
             var query = _session.Query<Check>();
             if (!String.IsNullOrEmpty(description))
                 query = query.Where(x => x.Description.Contains(description));
             if (!String.IsNullOrEmpty(ofpSystem))
                 query = query.Where(x => x.OfpSystem.Label.Equals(ofpSystem));
+            if (!String.IsNullOrEmpty(type))
+                query = query.Where(x => x.Type.Label.Equals(type));
             if (isImplemented.HasValue)
                 query = query.Where(x => x.IsImplemented == isImplemented.Value);
             if (offset > 0)

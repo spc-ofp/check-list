@@ -17,7 +17,16 @@
             <textarea name="desc" class="form-control" rows="10" ng-model="item.Description" id="Description" placeholder="Enter Description" required/>
         <span class="error" ng-show="form.desc.$error.required">Required!</span><br>
         </div>
-        
+    </div>
+
+    <div class="form-group" ng-class="{error: form.OfpSystem.$invalid}">
+        <label class="control-label col-sm-2" for="Type">Type</label>
+        <div class ="col-sm-2">
+            <select name="TypeList" ng-model="item.Type" ng-options="t.Label as t.Label for t in Types" class="form-control" id="Type" required>
+                <option value="">- Type -</option>
+            </select>
+        </div>
+        <span class="error" ng-show="form.TypeList.$error.required">Required!</span><br>
     </div>
 
     <div class="form-group">

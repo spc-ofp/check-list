@@ -255,10 +255,12 @@
     <Compile Include="DAL\Configuration\NHibernateHelper.cs" />
     <Compile Include="DAL\Configuration\UnitOfWork.cs" />
     <Compile Include="DAL\Map\CheckMap.cs" />
+    <Compile Include="DAL\Map\CheckTypeMap.cs" />
     <Compile Include="DAL\Map\OfpSystemMap.cs" />
     <Compile Include="DAL\Repository\CheckRepository.cs" />
     <Compile Include="DAL\Repository\Repository.cs" />
     <Compile Include="Domain\Check.cs" />
+    <Compile Include="Domain\CheckType.cs" />
     <Compile Include="Domain\OfpSystem.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">

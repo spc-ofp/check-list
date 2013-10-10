@@ -5,6 +5,7 @@ services.factory('DQCS', function ($resource) {
         , { id: '@id' }
         , {
             queryOfpSystem: { method: 'GET', params: { id: 'GetSystems' }, isArray: true },
+            queryTypes: { method: 'GET', params: { id: 'GetTypes' }, isArray: true },
             update: { method: 'PUT' }
         }
     );

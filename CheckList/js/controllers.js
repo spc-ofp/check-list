@@ -2,7 +2,8 @@
 
 controllers.controller("CreateCtrl", function ($scope, $location, DQCS) {
     $scope.OfpSystems = DQCS.queryOfpSystem();
-    $scope.IsImplementedList = [{ Id: 1, Label: "true" }, { Id: 0, Label: "false" }];
+    $scope.Types = DQCS.queryTypes();
+    $scope.IsImplementedList = [{ Id: 1, Label: "Yes" }, { Id: 0, Label: "No" }];
     $scope.save = function () {
         DQCS.save($scope.item, function () {
             $location.path('/');
@@ -14,7 +15,8 @@ controllers.controller("CreateCtrl", function ($scope, $location, DQCS) {
 
 controllers.controller("EditCtrl", function ($scope, $routeParams, $location, DQCS) {
     $scope.OfpSystems = DQCS.queryOfpSystem();
-    $scope.IsImplementedList = [{ Id: 1, Label: "true" }, { Id: 0, Label: "false" }];
+    $scope.Types = DQCS.queryTypes();
+    $scope.IsImplementedList = [{ Id: 1, Label: "Yes" }, { Id: 0, Label: "No" }];
     $scope.item = DQCS.get({ id: $routeParams.itemId });
 
     $scope.save = function () {
@@ -26,7 +28,7 @@ controllers.controller("EditCtrl", function ($scope, $routeParams, $location, DQ
 
 controllers.controller("ListCtrl", function ($scope, $location, DQCS) {
     $scope.search = function () {
-        DQCS.query({ q: $scope.query, systemQuery: $scope.systemQuery, isImplementedQuery: $scope.isImplementedQuery, limit: $scope.limit, offset: $scope.offset },
+        DQCS.query({ q: $scope.query, systemQuery: $scope.systemQuery, isImplementedQuery: $scope.isImplementedQuery,typeQuery : $scope.typeQuery, limit: $scope.limit, offset: $scope.offset },
             function (items) {
                 var cnt = items.length;
                 $scope.no_more = cnt < $scope.limit;
@@ -62,10 +64,15 @@ controllers.controller("ListCtrl", function ($scope, $location, DQCS) {
         if (undefined != $scope.systemQuery && $scope.systemQuery.length > 0) {
             return true;
         }
-        if (undefined != $scope.query && $scope.query.length > 0)
+        if (undefined != $scope.typeQuery && $scope.typeQuery.length > 0) {
             return true;
-        if (undefined != $scope.isImplementedQuery && $scope.isImplementedQuery.length > 0)
+        }
+        if (undefined != $scope.query && $scope.query.length > 0) {
             return true;
+        }
+        if (undefined != $scope.isImplementedQuery && $scope.isImplementedQuery.length > 0) {
+            return true;
+        }
         return false;
     }
 
@@ -79,6 +86,7 @@ controllers.controller("ListCtrl", function ($scope, $location, DQCS) {
     };
 
     $scope.OfpSystems = DQCS.queryOfpSystem();
+    $scope.Types = DQCS.queryTypes();
 
     $scope.show_more = function () { return !$scope.no_more };
     $scope.limit = 10;

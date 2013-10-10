@@ -12,6 +12,7 @@ namespace CheckList.Models
         public String OfpSystem { get; set; }
         public String Description { get; set; }
         public int IsImplemented { get; set; }
+        public String Type { get; set; }
 
         public CheckModel(Check check)
         {
@@ -19,6 +20,7 @@ namespace CheckList.Models
             this.OfpSystem = check.OfpSystem.Label;
             this.Description = check.Description;
             this.IsImplemented = Convert.ToInt32(check.IsImplemented);
+            this.Type = check.Type.Label;
         }
 
         public CheckModel() { }
