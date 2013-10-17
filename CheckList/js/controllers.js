@@ -13,6 +13,8 @@ controllers.controller("CreateCtrl", function ($scope, $location, DQCS) {
     };
 });
 
+
+
 controllers.controller("EditCtrl", function ($scope, $routeParams, $location, DQCS) {
     $scope.OfpSystems = DQCS.queryOfpSystem();
     $scope.Types = DQCS.queryTypes();
