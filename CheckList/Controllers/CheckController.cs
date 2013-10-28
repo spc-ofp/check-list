@@ -12,7 +12,7 @@ using System.Web.Http;
 
 namespace CheckList.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class ChecksController : ApiController
     {
         private readonly Repository _repository;

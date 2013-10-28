@@ -1,5 +1,5 @@
 ﻿<br />
-<form class="form-inline">
+<form class="well form-inline">
     <div class="form-group">
         <div class ="col-lg">
             <select ng-model="systemQuery" ng-options="s.Label as s.Label for s in OfpSystems" class="form-control">
@@ -40,7 +40,7 @@
         <th>Description</th>
         <th><a style="cursor:pointer" ng_click="sort_by='Type';asc = !asc" >Type </a><span ng-show="do_show_arrow('Type',true)"><i class="icon-circle-arrow-down"></i></span><span ng-show="do_show_arrow('Type',false)"><i class="icon-circle-arrow-up"></i></span></th>
         <th>Implemented?</th>
-        <th><a href="#/new"><i class="icon-plus-sign icon-2x"></i></a></th>
+        <th><a ng-href="#/new"><i class="icon-plus-sign icon-2x"></i></a></th>
     </thead>
     <tbody>
         <tr ng-repeat="item in items | orderBy:sort_by:!asc" id="item_{{item.Id}}" class="my-repeat-animation">
@@ -49,10 +49,10 @@
             <td>{{item.Description|truncate:100}}</td>
             <td>{{item.Type}}</td>
             <td><input type="checkbox" ng-checked={{item.IsImplemented}} disabled/></td>
-            <td><a href="#/edit/{{item.Id}}"><i class="icon-edit"></i></a> <a style="cursor:pointer" ng-click="askDelete()"><i class="icon-remove"></i></a></td>
+            <td><a ng-href="#/edit/{{item.Id}}"><i class="icon-edit"></i></a> <a style="cursor:pointer" ng-click="askDelete()"><i class="icon-remove"></i></a></td>
         </tr>
     </tbody>
 </table>
 
-<a href="" ng-click = "getMore()" 
+<a ng-href="" ng-click = "getMore()" 
     ng-show ="show_more()">Show more</a>

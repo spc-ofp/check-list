@@ -39,6 +39,8 @@ controllers.controller("ListCtrl", function ($scope, $location, DQCS) {
         )
     };
 
+    
+
     $scope.delete = function (itemId) {
         DQCS.delete({ id: itemId }, function () {
             $("#item_" + itemId).fadeOut();
