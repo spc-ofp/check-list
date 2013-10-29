@@ -46,7 +46,8 @@
         <tr ng-repeat="item in items | orderBy:sort_by:!asc" id="item_{{item.Id}}" class="my-repeat-animation">
             <td>{{item.Id}}</td>
             <td>{{item.OfpSystem}}</td>
-            <td>{{item.Description|truncate:100}}</td>
+            <td ng-if="item.Description.length<100">{{item.Description}}</td>
+            <td ng-if="item.Description.length>=100"><a popover="{{item.Description}}" popover-trigger="mouseenter">{{item.Description|truncate:100}}</a></td>
             <td>{{item.Type}}</td>
             <td><input type="checkbox" ng-checked={{item.IsImplemented}} disabled/></td>
             <td><a ng-href="#/edit/{{item.Id}}"><i class="icon-edit"></i></a> <a style="cursor:pointer" ng-click="askDelete()"><i class="icon-remove"></i></a></td>

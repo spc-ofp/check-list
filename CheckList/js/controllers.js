@@ -98,4 +98,5 @@ controllers.controller("ListCtrl", function ($scope, $location, DQCS) {
     $scope.reset();
     $scope.asc = true;
     $scope.sort_by = 'Id';
+   
 });

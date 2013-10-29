@@ -1,4 +1,4 @@
-﻿var DQCSApp = angular.module("DQCSApp", ["ngRoute", "ngResource", "ngAnimate", "DQCSApp.services", "DQCSApp.controllers", "filters"]).
+﻿var DQCSApp = angular.module("DQCSApp", ["ngRoute", "ngResource", "ngAnimate", "DQCSApp.services", "DQCSApp.controllers", "filters","ui.bootstrap"]).
     config(function ($routeProvider) {
         $routeProvider.
             when('/edit/:itemId', { controller: 'EditCtrl', templateUrl: 'detail.html' }).
